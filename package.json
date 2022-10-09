@@ -1,0 +1,15 @@
+{
+  "name": "pronobot",
+  "version": "1.0.0",
+  "description": "A bot to play pronoKart",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "irc": "^0.5.2",
+    "websocket": "^1.0.34"
+  }
+}

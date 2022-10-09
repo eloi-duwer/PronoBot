@@ -1,0 +1,4 @@
+const parseMsg = require('./parseMsg')
+
+parseMsg('@badge-info=;badges=moderator/1;color=#8A2BE2;display-name=PronoKart;emotes=;first-msg=0;flags=;id=04b25cb9-0b97-4f3c-937f-5e8507d228a7;mod=1;returning-chatter=0;room-id=49474235;subscriber=0;tmi-sent-ts=1665266032586;turbo=0;user-id=486826548;user-type=mod :pronokart!pronokart@pronokart.tmi.twitch.tv PRIVMSG #misterjday :Cotes du moment : 1er = 675 pts, 2ème = 513 pts, 3ème = 373 pts, 4ème = 255 pts, 5ème = 160 pts, 6ème = 114 pts, 7ème = 196 pts, 8ème = 301 pts, 9ème = 428 pts, 10ème = 577 pts, 11ème = 748 pts, 12ème = 941 pts.')
+parseMsg('@badge-info=;badges=moderator/1;color=#8A2BE2;display-name=PronoKart;emotes=;flags=;id=c30fbe26-b1cb-4d33-9208-0ec893174b21;login=pronokart;mod=1;msg-id=announcement;room-id=49474235;subscriber=0;system-msg=;tmi-sent-ts=1665266184972;user-id=486826548;user-type=mod :tmi.twitch.tv USERNOTICE #misterjday :JDay est arrivé 9ème !')
