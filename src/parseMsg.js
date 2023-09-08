@@ -51,12 +51,12 @@ module.exports = function parseMsg(data) {
 		// A game is ending
 		if (msg.includes('ACTION Bravo à')) {
 			const points = +msg.match(/qui gagnent (?<points>\d+) points !/)?.groups?.points
-			const place = odds.indexOf(points) + 1
+			const place = odds.indexOf(points)
 			if (place === 0) {
 				console.error(`Could not find placement related to odd ${odds}`)
 				return
 			}
-			console.log(`Final Placement: ${place}`)
+			console.log(`Final Placement: ${place + 1}`)
 			if (place === currentPrediction) {
 				console.log(`Guessed correctly !`)
 			} else {
@@ -71,7 +71,7 @@ module.exports = function parseMsg(data) {
 						correct: 0
 					}
 				}
-				if (predictions[i] === place - 1) {
+				if (predictions[i] === place) {
 					stats[title].correct++
 				}
 				stats[title].guess++
