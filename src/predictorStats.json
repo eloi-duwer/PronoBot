@@ -1,1 +1,14 @@
-{}
+{
+  "Maximal": {
+    "guess": 1,
+    "correct": 0
+  },
+  "Minimal": {
+    "guess": 1,
+    "correct": 0
+  },
+  "Random": {
+    "guess": 1,
+    "correct": 0
+  }
+}

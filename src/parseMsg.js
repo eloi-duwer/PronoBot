@@ -21,8 +21,16 @@ module.exports = function parseMsg(data) {
 		}
 	}, {})
 
-	// A game is starting
-	if (type === 'PRIVMSG') {
+	tags = tags.split(';').reduce((acc, tag) => {
+		const [tagName, tagValue] = tag.split('=')
+		return {
+			...acc,
+			[tagName]: tagValue
+		}
+	}, {})
+
+	if (tags['display-name'] === 'PronoKart') {
+		// A game is starting
 		if (msg.startsWith(':Cotes du moment : ')) {
 			console.log(`New odds: `, msg)
 			msg = msg.slice(':Cotes du moment : '.length)
@@ -37,13 +45,17 @@ module.exports = function parseMsg(data) {
 			})
 
 			currentPrediction = findBestPrediction()
+			console.log(odds)
 		}
-	}
 
-	// A game is ending
-	if (type === 'USERNOTICE' && parsedTags['msg-id'] === 'announcement') {
-		if (msg.startsWith(':JDay est arrivé')) {
-			const place = +msg.match(/:JDay est arrivé (?<place>\d+)/).groups.place
+		// A game is ending
+		if (msg.includes('ACTION Bravo à')) {
+			const points = +msg.match(/qui gagnent (?<points>\d+) points !/)?.groups?.points
+			const place = odds.indexOf(points) + 1
+			if (place === 0) {
+				console.error(`Could not find placement related to odd ${odds}`)
+				return
+			}
 			console.log(`Final Placement: ${place}`)
 			if (place === currentPrediction) {
 				console.log(`Guessed correctly !`)

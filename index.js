@@ -26,10 +26,14 @@ client.on('connect', function(connection) {
 		}
 	})
 
-	connection.sendUTF(`PASS oauth:${token}`)
-	connection.sendUTF(`JOIN ${channel}`)
-	// Needed to get USERNOTICE messages, for the endgame place announcement
+	connection.on('close', () => {
+		console.log('Client closed connection')
+	})
+
 	connection.sendUTF('CAP REQ :twitch.tv/tags')
+	connection.sendUTF(`PASS oauth:${token}`)
+	connection.sendUTF(`NICK mookieCaster`)
+	connection.sendUTF(`JOIN ${channel}`)
 });
 
 client.connect('ws://irc-ws.chat.twitch.tv:80')
