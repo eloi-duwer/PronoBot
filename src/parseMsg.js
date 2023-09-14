@@ -8,7 +8,7 @@ console.log(`Loaded ${predictors.length} predictors: ${predictors.map(p => p.tit
 
 let odds = []
 let predictions = []
-let currentPrediction
+let currentPrediction = null
 
 module.exports = function parseMsg(data) {
 	let [tags, host, type, channel, ...msg] = data.split(' ')
@@ -57,6 +57,10 @@ module.exports = function parseMsg(data) {
 				return
 			}
 			console.log(`Final Placement: ${place + 1}`)
+			if (currentPrediction == null) {
+				console.log('Did not predict anything this round')
+				return
+			}
 			if (place === currentPrediction) {
 				console.log(`Guessed correctly !`)
 			} else {
@@ -72,6 +76,7 @@ module.exports = function parseMsg(data) {
 					}
 				}
 				if (predictions[i] === place) {
+					console.log(`Predictor ${p.title} was correct !`)
 					stats[title].correct++
 				}
 				stats[title].guess++
